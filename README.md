@@ -31,6 +31,7 @@ I should add at least two of the following features:
 ## Future Improvements
 
 - Move the data into a REST API
+- Replace externally hosted thumbnail images with local or API-managed assets to avoid depending on third-party image availability
 
 ## Getting Started
 
