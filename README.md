@@ -9,7 +9,7 @@ I should add at least two of the following features:
 - Sort the cards by category/date
 - Filter by title/tags
 
-## Categories
+### Categories
 
 - Podcasts
 - Articles
@@ -18,12 +18,23 @@ I should add at least two of the following features:
 - Fitness
 - Meditation
 
-# Decisions
+## Decisions
 
-- Stack
-- TypeScript is expected for this task
+- I chose Vite as a lightweight quick way to start a React App suitable for a small scope project like this
+- I will use Vitest for my unit tests as it is a lightweight, fast and integrates well with Vite.
+  I am more comfortable with Jest but I think the difference should be negligible.
+- I will use Playwright for E2E testing to demonstrate my ability to write E2E tests in a technology mentioned on the job spec.
+  I am comfortable writing Playwright from previous experience.
+- TypeScript is expected for this task and I am comfortable with it.
 - TDD approach, Red-Green-Refactor
 
-# Future Improvements
+## Future Improvements
 
 - Move the data into a REST API
+
+# Getting Started
+
+```bash
+npm install
+npm run dev
+```
