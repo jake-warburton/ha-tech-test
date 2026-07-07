@@ -1,37 +1,24 @@
 import { describe, expect, it } from "vitest";
 import { groupHealthResourcesByCategory } from "./groupHealthResourcesByCategory";
-import type { HealthResource } from "../types/healthResource";
+import { createMockHealthResource } from "../test/factories/createMockHealthResource";
 
-const createMockResource = (
-  overrides: Partial<HealthResource> = {},
-): HealthResource => {
-  return {
-    id: "001",
-    category: "Podcasts",
-    title: "Mindful Moments",
-    thumbnail: "https://example.com/image.jpg",
-    tags: ["wellbeing"],
-    duration: 25,
-    description: "Description",
-    date_uploaded: "2025-07-10",
-    ...overrides,
-  };
-};
-
-const firstPodcast = createMockResource({
+const firstPodcast = createMockHealthResource({
   id: "001",
   category: "Podcasts",
 });
-const firstFitness = createMockResource({ id: "002", category: "Fitness" });
-const secondPodcast = createMockResource({
+const firstFitness = createMockHealthResource({
+  id: "002",
+  category: "Fitness",
+});
+const secondPodcast = createMockHealthResource({
   id: "003",
   category: "Podcasts",
 });
-const firstMeditation = createMockResource({
+const firstMeditation = createMockHealthResource({
   id: "004",
   category: "Meditation",
 });
-const secondFitness = createMockResource({
+const secondFitness = createMockHealthResource({
   id: "005",
   category: "Fitness",
 });
@@ -48,9 +35,15 @@ describe("groupHealthResourcesByCategory", () => {
   });
 
   it("groups resources by their category", () => {
-    const podcast = createMockResource({ id: "001", category: "Podcasts" });
-    const article = createMockResource({ id: "002", category: "Articles" });
-    const secondPodcast = createMockResource({
+    const podcast = createMockHealthResource({
+      id: "001",
+      category: "Podcasts",
+    });
+    const article = createMockHealthResource({
+      id: "002",
+      category: "Articles",
+    });
+    const secondPodcast = createMockHealthResource({
       id: "003",
       category: "Podcasts",
     });
