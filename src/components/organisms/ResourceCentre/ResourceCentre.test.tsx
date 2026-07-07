@@ -1,10 +1,10 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
+import { getHealthResources } from "../../../services/healthResources";
+import { createMockHealthResource } from "../../../test/factories/createMockHealthResource";
 import { ResourceCentre } from "./ResourceCentre";
-import { getHealthResources } from "../services/healthResources";
-import { createMockHealthResource } from "../test/factories/createMockHealthResource";
 
-vi.mock("../services/healthResources", () => ({
+vi.mock("../../../services/healthResources", () => ({
   getHealthResources: vi.fn(),
 }));
 
