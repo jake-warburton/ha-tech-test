@@ -20,7 +20,7 @@ export const ResourceCentre = () => {
   const groupedResources = groupHealthResourcesByCategory(resources);
 
   return (
-    <main>
+    <div className="space-y-10">
       {Object.entries(groupedResources).map(([category, categoryResources]) => (
         <ResourceCategorySection
           key={category}
@@ -28,6 +28,6 @@ export const ResourceCentre = () => {
           resources={categoryResources}
         />
       ))}
-    </main>
+    </div>
   );
 };
