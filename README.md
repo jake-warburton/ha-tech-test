@@ -1,7 +1,7 @@
 # Overview
 
 This is an SPA built for a tech test. The single page should display different resources grouped by their category.
-I need to display the groupped resources with Title, Thumbnail image, Tags (max 3), Read/Watch time in minutes
+I need to display the grouped resources with Title, Thumbnail image, Tags (max 3), Read/Watch time in minutes
 
 I should add at least two of the following features:
 
@@ -32,7 +32,7 @@ I should add at least two of the following features:
 
 - Move the data into a REST API
 
-# Getting Started
+## Getting Started
 
 ```bash
 npm install
