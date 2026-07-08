@@ -73,7 +73,7 @@ describe("ResourceCentre", () => {
     );
 
     // Assert
-    const details = screen.getByRole("region", {
+    const details = screen.getByRole("dialog", {
       name: "Selected resource details",
     });
 
