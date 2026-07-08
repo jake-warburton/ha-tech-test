@@ -5,7 +5,7 @@ type ResourceTagFiltersProps = {
 };
 
 const getFilterButtonClassName = (isSelected: boolean) =>
-  `rounded-full px-3 py-1.5 text-sm font-medium ring-1 transition focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 ${
+  `cursor-pointer rounded-full px-3 py-1.5 text-sm font-medium ring-1 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 ${
     isSelected
       ? "bg-teal-700 text-white ring-teal-700"
       : "bg-white text-slate-700 ring-slate-300 hover:bg-slate-50"

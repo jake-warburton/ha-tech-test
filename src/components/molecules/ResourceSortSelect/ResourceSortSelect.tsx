@@ -23,7 +23,7 @@ export const ResourceSortSelect = ({
         onChange={(event) =>
           onSortOrderChange(event.target.value as HealthResourceSortOrder)
         }
-        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 shadow-sm focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        className="w-full cursor-pointer rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 shadow-sm focus-visible:border-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
       >
         <option value="newest">Newest first</option>
         <option value="oldest">Oldest first</option>

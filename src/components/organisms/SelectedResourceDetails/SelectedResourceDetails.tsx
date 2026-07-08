@@ -15,7 +15,7 @@ export const SelectedResourceDetails = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 min-h-dvh overflow-y-auto bg-slate-950/50 px-4 py-6"
+      className="fixed inset-0 z-50 min-h-dvh cursor-pointer overflow-y-auto bg-slate-950/50 px-4 py-6"
       data-testid="resource-details-backdrop"
       onClick={onClose}
     >
@@ -25,7 +25,7 @@ export const SelectedResourceDetails = ({
           aria-modal="true"
           aria-labelledby={titleId}
           aria-describedby={descriptionId}
-          className="max-h-full w-full max-w-2xl overflow-y-auto rounded-lg border border-slate-200 bg-white p-8 shadow-xl sm:p-10"
+          className="max-h-full w-full max-w-2xl cursor-default overflow-y-auto rounded-lg border border-slate-200 bg-white p-8 shadow-xl sm:p-10"
           onClick={(event) => {
             event.stopPropagation();
           }}
@@ -41,7 +41,7 @@ export const SelectedResourceDetails = ({
             </h2>
             <button
               type="button"
-              className="-mt-1 cursor-pointer text-3xl leading-none text-slate-400 transition hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-4"
+              className="-mt-1 cursor-pointer text-3xl leading-none text-slate-400 transition hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-4"
               onClick={onClose}
               aria-label="Close details"
               autoFocus

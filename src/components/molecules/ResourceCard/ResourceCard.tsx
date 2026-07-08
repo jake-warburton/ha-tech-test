@@ -12,7 +12,7 @@ export const ResourceCard = ({ resource, onSelect }: ResourceCardProps) => {
   const visibleTags = resource.tags.slice(0, MAX_VISIBLE_TAGS);
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-teal-300 hover:shadow-md">
+    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-teal-300 hover:shadow-md focus-within:border-teal-300 focus-within:shadow-md">
       <img
         src={resource.thumbnail}
         alt={`${resource.title} thumbnail`}
@@ -38,7 +38,7 @@ export const ResourceCard = ({ resource, onSelect }: ResourceCardProps) => {
         {onSelect ? (
           <button
             type="button"
-            className="mt-auto rounded-md bg-teal-700 px-3 py-2 text-sm font-semibold text-white transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+            className="mt-auto cursor-pointer rounded-md bg-teal-700 px-3 py-2 text-sm font-semibold text-white transition hover:bg-teal-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
             onClick={() => onSelect(resource)}
           >
             View {resource.title}
