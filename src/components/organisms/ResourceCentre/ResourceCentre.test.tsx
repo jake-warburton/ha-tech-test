@@ -56,9 +56,12 @@ describe("ResourceCentre", () => {
     // Arrange
     const user = userEvent.setup();
     const podcast = createMockHealthResource({
-      id: "001",
+      id: "resource-001",
       category: "Podcasts",
       title: "Mindful Moments",
+      thumbnail: "https://example.com/mindful-moments.jpg",
+      tags: ["wellbeing", "mindfulness", "relaxation"],
+      duration: 25,
       description:
         "A calming podcast focused on mindfulness techniques for daily life.",
       date_uploaded: "2025-07-10",
@@ -79,11 +82,22 @@ describe("ResourceCentre", () => {
       within(details).getByRole("heading", { name: "Mindful Moments" }),
     ).toBeInTheDocument();
     expect(
+      within(details).getByRole("img", {
+        name: "Mindful Moments thumbnail",
+      }),
+    ).toHaveAttribute("src", "https://example.com/mindful-moments.jpg");
+    expect(
       within(details).getByText(
         "A calming podcast focused on mindfulness techniques for daily life.",
       ),
     ).toBeInTheDocument();
+    expect(within(details).getByText("resource-001")).toBeInTheDocument();
+    expect(within(details).getByText("Podcasts")).toBeInTheDocument();
+    expect(within(details).getByText("25 min")).toBeInTheDocument();
     expect(within(details).getByText("2025-07-10")).toBeInTheDocument();
+    expect(within(details).getByText("wellbeing")).toBeInTheDocument();
+    expect(within(details).getByText("mindfulness")).toBeInTheDocument();
+    expect(within(details).getByText("relaxation")).toBeInTheDocument();
   });
 
   it("closes the selected resource details modal", async () => {
