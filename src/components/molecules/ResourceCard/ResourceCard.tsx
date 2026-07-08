@@ -5,9 +5,10 @@ const MAX_VISIBLE_TAGS = 3;
 
 type ResourceCardProps = {
   resource: HealthResource;
+  onSelect?: (resource: HealthResource) => void;
 };
 
-export const ResourceCard = ({ resource }: ResourceCardProps) => {
+export const ResourceCard = ({ resource, onSelect }: ResourceCardProps) => {
   const visibleTags = resource.tags.slice(0, MAX_VISIBLE_TAGS);
 
   return (
@@ -34,6 +35,15 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
             </li>
           ))}
         </ul>
+        {onSelect ? (
+          <button
+            type="button"
+            className="mt-auto rounded-md bg-teal-700 px-3 py-2 text-sm font-semibold text-white transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+            onClick={() => onSelect(resource)}
+          >
+            View {resource.title}
+          </button>
+        ) : null}
       </div>
     </article>
   );

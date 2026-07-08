@@ -4,11 +4,13 @@ import { ResourceCard } from "../../molecules/ResourceCard/ResourceCard";
 type ResourceCategorySectionProps = {
   category: string;
   resources: HealthResource[];
+  onResourceSelect: (resource: HealthResource) => void;
 };
 
 export const ResourceCategorySection = ({
   category,
   resources,
+  onResourceSelect,
 }: ResourceCategorySectionProps) => {
   const headingId = `${category.toLowerCase()}-heading`;
 
@@ -25,7 +27,7 @@ export const ResourceCategorySection = ({
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {resources.map((resource) => (
           <li key={resource.id}>
-            <ResourceCard resource={resource} />
+            <ResourceCard resource={resource} onSelect={onResourceSelect} />
           </li>
         ))}
       </ul>
