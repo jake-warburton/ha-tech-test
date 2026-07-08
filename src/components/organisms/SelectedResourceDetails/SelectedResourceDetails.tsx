@@ -1,4 +1,5 @@
 import type { HealthResource } from "../../../types/healthResource";
+import { Tag } from "../../atoms/Tag/Tag";
 
 type SelectedResourceDetailsProps = {
   resource: HealthResource;
@@ -48,6 +49,11 @@ export const SelectedResourceDetails = ({
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <img
+            src={resource.thumbnail}
+            alt={`${resource.title} thumbnail`}
+            className="mt-8 aspect-video w-full rounded-md object-cover"
+          />
           <p
             id={descriptionId}
             className="mt-6 text-base leading-7 text-slate-600"
@@ -56,12 +62,28 @@ export const SelectedResourceDetails = ({
           </p>
           <dl className="mt-8 grid gap-6 border-t border-slate-200 pt-6 text-sm text-slate-600 sm:grid-cols-2">
             <div>
+              <dt className="font-semibold text-slate-950">Resource ID</dt>
+              <dd>{resource.id}</dd>
+            </div>
+            <div>
               <dt className="font-semibold text-slate-950">Date uploaded</dt>
               <dd>{resource.date_uploaded}</dd>
             </div>
             <div>
               <dt className="font-semibold text-slate-950">Category</dt>
               <dd>{resource.category}</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-slate-950">Time</dt>
+              <dd>{resource.duration} min</dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="font-semibold text-slate-950">Tags</dt>
+              <dd className="mt-2 flex flex-wrap gap-2">
+                {resource.tags.map((tag) => (
+                  <Tag key={tag} label={tag} />
+                ))}
+              </dd>
             </div>
           </dl>
         </section>
