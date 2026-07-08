@@ -1,13 +1,13 @@
 # Overview
 
 This is an SPA built for a tech test. The single page should display different resources grouped by their category.
-I need to display the grouped resources with Title, Thumbnail image, Tags (max 3), Read/Watch time in minutes
+It displays grouped resources with title, thumbnail image, up to 3 tags, and read/watch time in minutes.
 
-I should add at least two of the following features:
+I have included all three optional features from the brief:
 
 - When a user clicks on a resource, display all the resource data including the description and date uploaded
 - Sort the cards by category/date
-- Filter by title/tags
+- Filter by tags
 
 ### Categories
 
@@ -27,15 +27,46 @@ I should add at least two of the following features:
   I am comfortable writing Playwright from previous experience.
 - TypeScript is expected for this task and I am comfortable with it.
 - TDD approach, Red-Green-Refactor
+- Tailwind is used for styling because it was mentioned in the job description and keeps the styling fast to iterate on for this size of task.
+
+## Implemented Features
+
+- Resources are loaded from local JSON to simulate data returned from a GET request
+- Resources are grouped by category on first load
+- Resource cards show title, thumbnail, up to 3 tags, and duration
+- Selecting a resource opens a modal with the full resource data
+- Resources can be filtered by tag
+- Resources can be sorted by newest date, oldest date, or category A-Z
+- Unit tests cover utility logic and main component behaviour
+- Playwright covers a key user journey through the app
+
+I interpreted the filtering requirement as tag filtering for this version. Tags are visible on each card and provide a quick way to discover related resources across categories. Title search would be the next logical filtering improvement if the dataset grew or the Resource Centre needed more free-text discovery.
 
 ## Future Improvements
 
 - Move the data into a REST API
 - Replace externally hosted thumbnail images with local or API-managed assets to avoid depending on third-party image availability
+- Add title search as an additional filter option
+- Add loading and error states around the resource fetch
 
 ## Getting Started
 
 ```bash
 npm install
 npm run dev
+```
+
+## Checks
+
+```bash
+npm run test:run
+npm run lint
+npm run build
+npm run test:e2e
+```
+
+To run the Playwright test visually:
+
+```bash
+npx playwright test --ui
 ```
