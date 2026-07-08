@@ -25,7 +25,10 @@ export const ResourceCentre = () => {
   return (
     <div className="space-y-10">
       {selectedResource ? (
-        <SelectedResourceDetails resource={selectedResource} />
+        <SelectedResourceDetails
+          resource={selectedResource}
+          onClose={() => setSelectedResource(null)}
+        />
       ) : null}
 
       {Object.entries(groupedResources).map(([category, categoryResources]) => (
