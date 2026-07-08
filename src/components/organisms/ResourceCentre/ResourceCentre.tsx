@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { getHealthResources } from "../../../services/healthResources";
 import type { HealthResource } from "../../../types/healthResource";
 import { groupHealthResourcesByCategory } from "../../../utils/groupHealthResourcesByCategory";
+import {
+  ResourceSortSelect,
+  type SortOrder,
+} from "../../molecules/ResourceSortSelect/ResourceSortSelect";
 import { ResourceTagFilters } from "../../molecules/ResourceTagFilters/ResourceTagFilters";
 import { ResourceCategorySection } from "../ResourceCategorySection/ResourceCategorySection";
 import { SelectedResourceDetails } from "../SelectedResourceDetails/SelectedResourceDetails";
-
-type SortOrder = "newest" | "oldest";
 
 export const ResourceCentre = () => {
   const [resources, setResources] = useState<HealthResource[]>([]);
@@ -56,23 +58,10 @@ export const ResourceCentre = () => {
         onTagSelect={setSelectedTag}
       />
 
-      <div className="max-w-48 space-y-2">
-        <label
-          htmlFor="resource-sort-order"
-          className="block text-sm font-semibold text-slate-900"
-        >
-          Sort by date
-        </label>
-        <select
-          id="resource-sort-order"
-          value={sortOrder}
-          onChange={(event) => setSortOrder(event.target.value as SortOrder)}
-          className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 shadow-sm focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
-        >
-          <option value="newest">Newest first</option>
-          <option value="oldest">Oldest first</option>
-        </select>
-      </div>
+      <ResourceSortSelect
+        sortOrder={sortOrder}
+        onSortOrderChange={setSortOrder}
+      />
 
       {Object.entries(groupedResources).map(([category, categoryResources]) => (
         <ResourceCategorySection
