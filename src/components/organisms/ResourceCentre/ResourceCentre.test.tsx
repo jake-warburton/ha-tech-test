@@ -189,4 +189,41 @@ describe("ResourceCentre", () => {
       "true",
     );
   });
+
+  it("sorts resources by oldest upload date first", async () => {
+    // Arrange
+    const user = userEvent.setup();
+    const newerPodcast = createMockHealthResource({
+      id: "001",
+      category: "Podcasts",
+      title: "Newer Podcast",
+      date_uploaded: "2025-07-10",
+    });
+    const olderPodcast = createMockHealthResource({
+      id: "002",
+      category: "Podcasts",
+      title: "Older Podcast",
+      date_uploaded: "2024-07-10",
+    });
+
+    mockGetHealthResources.mockResolvedValueOnce([newerPodcast, olderPodcast]);
+
+    // Act
+    render(<ResourceCentre />);
+    await user.selectOptions(
+      await screen.findByRole("combobox", { name: "Sort by date" }),
+      "oldest",
+    );
+
+    // Assert
+    const podcastsSection = screen.getByRole("region", { name: "Podcasts" });
+    const resourceHeadings = within(podcastsSection).getAllByRole("heading", {
+      level: 3,
+    });
+
+    expect(resourceHeadings.map((heading) => heading.textContent)).toEqual([
+      "Older Podcast",
+      "Newer Podcast",
+    ]);
+  });
 });
