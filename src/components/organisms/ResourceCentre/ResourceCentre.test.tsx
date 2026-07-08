@@ -157,4 +157,36 @@ describe("ResourceCentre", () => {
       screen.queryByRole("dialog", { name: "Mindful Moments" }),
     ).not.toBeInTheDocument();
   });
+
+  it("filters resources when a tag filter is selected", async () => {
+    // Arrange
+    const user = userEvent.setup();
+    const podcast = createMockHealthResource({
+      id: "001",
+      category: "Podcasts",
+      title: "Mindful Moments",
+      tags: ["wellbeing", "mindfulness"],
+    });
+    const article = createMockHealthResource({
+      id: "002",
+      category: "Articles",
+      title: "The Science of Sleep",
+      tags: ["sleep", "science"],
+    });
+
+    mockGetHealthResources.mockResolvedValueOnce([podcast, article]);
+
+    // Act
+    render(<ResourceCentre />);
+    await screen.findByText("Mindful Moments");
+    await user.click(await screen.findByRole("button", { name: "sleep" }));
+
+    // Assert
+    expect(screen.getByText("The Science of Sleep")).toBeInTheDocument();
+    expect(screen.queryByText("Mindful Moments")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "sleep" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+  });
 });
