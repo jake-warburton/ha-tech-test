@@ -1,4 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { getHealthResources } from "../../../services/healthResources";
 import { createMockHealthResource } from "../../../test/factories/createMockHealthResource";
@@ -49,5 +50,41 @@ describe("ResourceCentre", () => {
     expect(
       within(articlesSection).getByText("The Science of Sleep"),
     ).toBeInTheDocument();
+  });
+
+  it("displays all resource details when a resource is selected", async () => {
+    // Arrange
+    const user = userEvent.setup();
+    const podcast = createMockHealthResource({
+      id: "001",
+      category: "Podcasts",
+      title: "Mindful Moments",
+      description:
+        "A calming podcast focused on mindfulness techniques for daily life.",
+      date_uploaded: "2025-07-10",
+    });
+
+    mockGetHealthResources.mockResolvedValueOnce([podcast]);
+
+    // Act
+    render(<ResourceCentre />);
+    await user.click(
+      await screen.findByRole("button", { name: "View Mindful Moments" }),
+    );
+
+    // Assert
+    const details = screen.getByRole("region", {
+      name: "Selected resource details",
+    });
+
+    expect(
+      within(details).getByRole("heading", { name: "Mindful Moments" }),
+    ).toBeInTheDocument();
+    expect(
+      within(details).getByText(
+        "A calming podcast focused on mindfulness techniques for daily life.",
+      ),
+    ).toBeInTheDocument();
+    expect(within(details).getByText("2025-07-10")).toBeInTheDocument();
   });
 });
