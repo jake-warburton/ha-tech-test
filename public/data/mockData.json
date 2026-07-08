@@ -6,8 +6,7 @@
     "thumbnail": "https://www.datocms-assets.com/93767/1753971746-photo.jpg",
     "tags": ["wellbeing", "mindfulness", "relaxation"],
     "duration": 25,
-    "description":
-      "A calming podcast focused on mindfulness techniques for daily life.",
+    "description": "A calming podcast focused on mindfulness techniques for daily life.",
     "date_uploaded": "2025-07-10"
   },
   {
@@ -17,8 +16,7 @@
     "thumbnail": "https://www.datocms-assets.com/93767/1751891809-photo.jpg",
     "tags": ["wellbeing", "sleep", "science"],
     "duration": 8,
-    "description":
-      "Explore the latest research on how sleep affects mental and physical health.",
+    "description": "Explore the latest research on how sleep affects mental and physical health.",
     "date_uploaded": "2025-06-22"
   },
   {
@@ -28,8 +26,7 @@
     "thumbnail": "https://www.datocms-assets.com/93767/1753971221-photo.jpg",
     "tags": ["community", "tips", "mindfulness"],
     "duration": 5,
-    "description":
-      "Your weekly dose of wellness tips and updates from our experts.",
+    "description": "Your weekly dose of wellness tips and updates from our experts.",
     "date_uploaded": "2025-08-01"
   },
   {
@@ -39,8 +36,7 @@
     "thumbnail": "https://www.datocms-assets.com/93767/1755147783-smoothie.jpg",
     "tags": ["nutrition", "energy", "tips"],
     "duration": 10,
-    "description":
-      "A quick and nutritious smoothie recipe to kickstart your day.",
+    "description": "A quick and nutritious smoothie recipe to kickstart your day.",
     "date_uploaded": "2025-07-15"
   },
   {
@@ -50,8 +46,7 @@
     "thumbnail": "https://www.datocms-assets.com/93767/1753972252-photo.jpg",
     "tags": ["mobility", "energy", "routine"],
     "duration": 10,
-    "description":
-      "A short and effective stretching routine to energize your mornings.",
+    "description": "A short and effective stretching routine to energise your mornings.",
     "date_uploaded": "2025-08-05"
   },
   {
@@ -61,8 +56,67 @@
     "thumbnail": "https://www.datocms-assets.com/93767/1753971468-photo.jpg",
     "tags": ["relaxation", "routine", "sleep"],
     "duration": 15,
-    "description":
-      "A soothing guided meditation to help you unwind and reduce stress.",
+    "description": "A soothing guided meditation to help you unwind and reduce stress.",
     "date_uploaded": "2025-07-28"
+  },
+  {
+    "id": "007",
+    "category": "Podcasts",
+    "title": "Burnout Check-In",
+    "thumbnail": "https://www.datocms-assets.com/93767/1753971746-photo.jpg",
+    "tags": ["stress", "workplace", "wellbeing"],
+    "duration": 32,
+    "description": "A practical conversation about spotting early signs of burnout and knowing when to ask for support.",
+    "date_uploaded": "2025-08-12"
+  },
+  {
+    "id": "008",
+    "category": "Articles",
+    "title": "Understanding Workplace Anxiety",
+    "thumbnail": "https://www.datocms-assets.com/93767/1751891809-photo.jpg",
+    "tags": ["anxiety", "workplace", "support"],
+    "duration": 9,
+    "description": "A clear guide to recognising workplace anxiety and using simple steps to manage difficult moments.",
+    "date_uploaded": "2025-07-03"
+  },
+  {
+    "id": "009",
+    "category": "Podcasts",
+    "title": "Returning After Time Off",
+    "thumbnail": "https://www.datocms-assets.com/93767/1753971746-photo.jpg",
+    "tags": ["workplace", "support", "wellbeing"],
+    "duration": 18,
+    "description": "A supportive discussion about easing back into work after sickness, stress or planned leave.",
+    "date_uploaded": "2025-06-18"
+  },
+  {
+    "id": "010",
+    "category": "Recipes",
+    "title": "Balanced Lunch Bowl",
+    "thumbnail": "https://www.datocms-assets.com/93767/1755147783-smoothie.jpg",
+    "tags": ["nutrition", "routine", "energy"],
+    "duration": 12,
+    "description": "A simple lunch recipe built around steady energy, balanced ingredients and easy preparation.",
+    "date_uploaded": "2025-06-30"
+  },
+  {
+    "id": "011",
+    "category": "Fitness",
+    "title": "Desk Mobility Reset",
+    "thumbnail": "https://www.datocms-assets.com/93767/1753972252-photo.jpg",
+    "tags": ["mobility", "workplace", "routine"],
+    "duration": 7,
+    "description": "A short movement break designed to ease stiffness during long periods at a desk.",
+    "date_uploaded": "2025-07-21"
+  },
+  {
+    "id": "012",
+    "category": "Fitness",
+    "title": "Low-Impact Cardio Starter",
+    "thumbnail": "https://www.datocms-assets.com/93767/1753972252-photo.jpg",
+    "tags": ["fitness", "energy", "routine"],
+    "duration": 14,
+    "description": "A beginner-friendly cardio session designed to build confidence without high-impact movement.",
+    "date_uploaded": "2025-08-10"
   }
 ]
