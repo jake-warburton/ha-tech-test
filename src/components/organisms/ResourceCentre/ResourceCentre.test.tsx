@@ -211,7 +211,7 @@ describe("ResourceCentre", () => {
     // Act
     render(<ResourceCentre />);
     await user.selectOptions(
-      await screen.findByRole("combobox", { name: "Sort by date" }),
+      await screen.findByRole("combobox", { name: "Sort resources" }),
       "oldest",
     );
 
@@ -224,6 +224,38 @@ describe("ResourceCentre", () => {
     expect(resourceHeadings.map((heading) => heading.textContent)).toEqual([
       "Older Podcast",
       "Newer Podcast",
+    ]);
+  });
+
+  it("sorts category sections alphabetically", async () => {
+    // Arrange
+    const user = userEvent.setup();
+    const podcast = createMockHealthResource({
+      id: "001",
+      category: "Podcasts",
+      title: "Mindful Moments",
+    });
+    const article = createMockHealthResource({
+      id: "002",
+      category: "Articles",
+      title: "The Science of Sleep",
+    });
+
+    mockGetHealthResources.mockResolvedValueOnce([podcast, article]);
+
+    // Act
+    render(<ResourceCentre />);
+    await user.selectOptions(
+      await screen.findByRole("combobox", { name: "Sort resources" }),
+      "category",
+    );
+
+    // Assert
+    const categoryHeadings = screen.getAllByRole("heading", { level: 2 });
+
+    expect(categoryHeadings.map((heading) => heading.textContent)).toEqual([
+      "Articles",
+      "Podcasts",
     ]);
   });
 });
