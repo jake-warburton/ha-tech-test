@@ -13,7 +13,11 @@ export const SelectedResourceDetails = ({
   const descriptionId = `selected-resource-${resource.id}-description`;
 
   return (
-    <div className="fixed inset-0 z-50 min-h-dvh overflow-y-auto bg-slate-950/50 px-4 py-6">
+    <div
+      className="fixed inset-0 z-50 min-h-dvh overflow-y-auto bg-slate-950/50 px-4 py-6"
+      data-testid="resource-details-backdrop"
+      onClick={onClose}
+    >
       <div className="flex min-h-full items-center justify-center">
         <section
           role="dialog"
@@ -21,6 +25,9 @@ export const SelectedResourceDetails = ({
           aria-labelledby={titleId}
           aria-describedby={descriptionId}
           className="max-h-full w-full max-w-2xl overflow-y-auto rounded-lg border border-slate-200 bg-white p-8 shadow-xl sm:p-10"
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
           onKeyDown={(event) => {
             if (event.key === "Escape") {
               onClose();
