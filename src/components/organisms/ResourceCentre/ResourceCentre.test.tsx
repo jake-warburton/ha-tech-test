@@ -73,9 +73,7 @@ describe("ResourceCentre", () => {
     );
 
     // Assert
-    const details = screen.getByRole("dialog", {
-      name: "Selected resource details",
-    });
+    const details = screen.getByRole("dialog", { name: "Mindful Moments" });
 
     expect(
       within(details).getByRole("heading", { name: "Mindful Moments" }),
@@ -108,7 +106,31 @@ describe("ResourceCentre", () => {
 
     // Assert
     expect(
-      screen.queryByRole("dialog", { name: "Selected resource details" }),
+      screen.queryByRole("dialog", { name: "Mindful Moments" }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("closes the selected resource details modal when Escape is pressed", async () => {
+    // Arrange
+    const user = userEvent.setup();
+    const podcast = createMockHealthResource({
+      id: "001",
+      category: "Podcasts",
+      title: "Mindful Moments",
+    });
+
+    mockGetHealthResources.mockResolvedValueOnce([podcast]);
+
+    // Act
+    render(<ResourceCentre />);
+    await user.click(
+      await screen.findByRole("button", { name: "View Mindful Moments" }),
+    );
+    await user.keyboard("{Escape}");
+
+    // Assert
+    expect(
+      screen.queryByRole("dialog", { name: "Mindful Moments" }),
     ).not.toBeInTheDocument();
   });
 });
