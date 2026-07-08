@@ -87,4 +87,28 @@ describe("ResourceCentre", () => {
     ).toBeInTheDocument();
     expect(within(details).getByText("2025-07-10")).toBeInTheDocument();
   });
+
+  it("closes the selected resource details modal", async () => {
+    // Arrange
+    const user = userEvent.setup();
+    const podcast = createMockHealthResource({
+      id: "001",
+      category: "Podcasts",
+      title: "Mindful Moments",
+    });
+
+    mockGetHealthResources.mockResolvedValueOnce([podcast]);
+
+    // Act
+    render(<ResourceCentre />);
+    await user.click(
+      await screen.findByRole("button", { name: "View Mindful Moments" }),
+    );
+    await user.click(screen.getByRole("button", { name: "Close details" }));
+
+    // Assert
+    expect(
+      screen.queryByRole("dialog", { name: "Selected resource details" }),
+    ).not.toBeInTheDocument();
+  });
 });
