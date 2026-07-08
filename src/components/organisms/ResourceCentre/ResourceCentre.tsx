@@ -3,9 +3,10 @@ import { getHealthResources } from "../../../services/healthResources";
 import type { HealthResource } from "../../../types/healthResource";
 import { groupHealthResourcesByCategory } from "../../../utils/groupHealthResourcesByCategory";
 import {
-  ResourceSortSelect,
-  type SortOrder,
-} from "../../molecules/ResourceSortSelect/ResourceSortSelect";
+  sortHealthResources,
+  type HealthResourceSortOrder,
+} from "../../../utils/sortHealthResources";
+import { ResourceSortSelect } from "../../molecules/ResourceSortSelect/ResourceSortSelect";
 import { ResourceTagFilters } from "../../molecules/ResourceTagFilters/ResourceTagFilters";
 import { ResourceCategorySection } from "../ResourceCategorySection/ResourceCategorySection";
 import { SelectedResourceDetails } from "../SelectedResourceDetails/SelectedResourceDetails";
@@ -13,7 +14,8 @@ import { SelectedResourceDetails } from "../SelectedResourceDetails/SelectedReso
 export const ResourceCentre = () => {
   const [resources, setResources] = useState<HealthResource[]>([]);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
+  const [sortOrder, setSortOrder] =
+    useState<HealthResourceSortOrder>("newest");
   const [selectedResource, setSelectedResource] =
     useState<HealthResource | null>(null);
 
@@ -33,25 +35,9 @@ export const ResourceCentre = () => {
   const filteredResources = selectedTag
     ? resources.filter((resource) => resource.tags.includes(selectedTag))
     : resources;
-  const sortedResources = [...filteredResources].sort((first, second) => {
-    if (sortOrder === "category") {
-      return first.category.localeCompare(second.category);
-    }
-
-    const firstDate = new Date(first.date_uploaded).getTime();
-    const secondDate = new Date(second.date_uploaded).getTime();
-
-    return sortOrder === "newest"
-      ? secondDate - firstDate
-      : firstDate - secondDate;
-  });
+  const sortedResources = sortHealthResources(filteredResources, sortOrder);
   const groupedResources = groupHealthResourcesByCategory(sortedResources);
-  const groupedResourceEntries =
-    sortOrder === "category"
-      ? Object.entries(groupedResources).sort(([first], [second]) =>
-          first.localeCompare(second),
-        )
-      : Object.entries(groupedResources);
+  const groupedResourceEntries = Object.entries(groupedResources);
 
   return (
     <div className="space-y-10">

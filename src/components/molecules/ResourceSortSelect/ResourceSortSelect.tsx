@@ -1,8 +1,8 @@
-export type SortOrder = "newest" | "oldest" | "category";
+import type { HealthResourceSortOrder } from "../../../utils/sortHealthResources";
 
 type ResourceSortSelectProps = {
-  sortOrder: SortOrder;
-  onSortOrderChange: (sortOrder: SortOrder) => void;
+  sortOrder: HealthResourceSortOrder;
+  onSortOrderChange: (sortOrder: HealthResourceSortOrder) => void;
 };
 
 export const ResourceSortSelect = ({
@@ -21,7 +21,7 @@ export const ResourceSortSelect = ({
         id="resource-sort-order"
         value={sortOrder}
         onChange={(event) =>
-          onSortOrderChange(event.target.value as SortOrder)
+          onSortOrderChange(event.target.value as HealthResourceSortOrder)
         }
         className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 shadow-sm focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
       >
