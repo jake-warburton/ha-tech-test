@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getHealthResources } from "../../../services/healthResources";
 import type { HealthResource } from "../../../types/healthResource";
+import { filterHealthResources } from "../../../utils/filterHealthResources";
 import { groupHealthResourcesByCategory } from "../../../utils/groupHealthResourcesByCategory";
 import {
   sortHealthResources,
@@ -32,9 +33,7 @@ export const ResourceCentre = () => {
   const tags = Array.from(
     new Set(resources.flatMap((resource) => resource.tags)),
   );
-  const filteredResources = selectedTag
-    ? resources.filter((resource) => resource.tags.includes(selectedTag))
-    : resources;
+  const filteredResources = filterHealthResources(resources, { selectedTag });
   const sortedResources = sortHealthResources(filteredResources, sortOrder);
   const groupedResources = groupHealthResourcesByCategory(sortedResources);
   const groupedResourceEntries = Object.entries(groupedResources);
