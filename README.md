@@ -3,7 +3,7 @@
 This is an SPA built for a tech test. The single page should display different resources grouped by their category.
 It displays grouped resources with title, thumbnail image, up to 3 tags, and read/watch time in minutes.
 
-I have included all three optional features from the brief:
+I have included the following optional features from the brief:
 
 - When a user clicks on a resource, display all the resource data including the description and date uploaded
 - Sort the cards by category/date
@@ -40,7 +40,7 @@ I have included all three optional features from the brief:
 - Unit tests cover utility logic and main component behaviour
 - Playwright covers a key user journey through the app
 
-I interpreted the filtering requirement as tag filtering for this version. Tags are visible on each card and provide a quick way to discover related resources across categories. Title search would be the next logical filtering improvement if the dataset grew or the Resource Centre needed more free-text discovery.
+I interpreted the filtering requirement as tag filtering for this version. Tags are visible on each card and provide a quick way to discover related resources across categories. Title search would be a logical next improvement if the dataset grew or the Resource Centre needed more free-text discovery.
 
 ## Future Improvements
 
