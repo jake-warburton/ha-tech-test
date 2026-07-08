@@ -34,6 +34,10 @@ export const ResourceCentre = () => {
     ? resources.filter((resource) => resource.tags.includes(selectedTag))
     : resources;
   const sortedResources = [...filteredResources].sort((first, second) => {
+    if (sortOrder === "category") {
+      return first.category.localeCompare(second.category);
+    }
+
     const firstDate = new Date(first.date_uploaded).getTime();
     const secondDate = new Date(second.date_uploaded).getTime();
 
@@ -42,6 +46,12 @@ export const ResourceCentre = () => {
       : firstDate - secondDate;
   });
   const groupedResources = groupHealthResourcesByCategory(sortedResources);
+  const groupedResourceEntries =
+    sortOrder === "category"
+      ? Object.entries(groupedResources).sort(([first], [second]) =>
+          first.localeCompare(second),
+        )
+      : Object.entries(groupedResources);
 
   return (
     <div className="space-y-10">
@@ -63,7 +73,7 @@ export const ResourceCentre = () => {
         onSortOrderChange={setSortOrder}
       />
 
-      {Object.entries(groupedResources).map(([category, categoryResources]) => (
+      {groupedResourceEntries.map(([category, categoryResources]) => (
         <ResourceCategorySection
           key={category}
           category={category}

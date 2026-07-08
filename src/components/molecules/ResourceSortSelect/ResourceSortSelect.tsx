@@ -1,4 +1,4 @@
-export type SortOrder = "newest" | "oldest";
+export type SortOrder = "newest" | "oldest" | "category";
 
 type ResourceSortSelectProps = {
   sortOrder: SortOrder;
@@ -15,7 +15,7 @@ export const ResourceSortSelect = ({
         htmlFor="resource-sort-order"
         className="block text-sm font-semibold text-slate-900"
       >
-        Sort by date
+        Sort resources
       </label>
       <select
         id="resource-sort-order"
@@ -27,6 +27,7 @@ export const ResourceSortSelect = ({
       >
         <option value="newest">Newest first</option>
         <option value="oldest">Oldest first</option>
+        <option value="category">Category A-Z</option>
       </select>
     </div>
   );

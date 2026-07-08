@@ -18,12 +18,12 @@ export const ResourceTagFilters = ({
 }: ResourceTagFiltersProps) => {
   return (
     <section aria-labelledby="resource-filters-heading" className="space-y-3">
-      <h2
+      <p
         id="resource-filters-heading"
         className="text-sm font-semibold text-slate-900"
       >
         Filter by tag
-      </h2>
+      </p>
       <div className="flex flex-wrap gap-2">
         <button
           type="button"
