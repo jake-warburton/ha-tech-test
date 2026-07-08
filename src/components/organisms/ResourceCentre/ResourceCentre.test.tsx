@@ -133,4 +133,28 @@ describe("ResourceCentre", () => {
       screen.queryByRole("dialog", { name: "Mindful Moments" }),
     ).not.toBeInTheDocument();
   });
+
+  it("closes the selected resource details modal when the backdrop is clicked", async () => {
+    // Arrange
+    const user = userEvent.setup();
+    const podcast = createMockHealthResource({
+      id: "001",
+      category: "Podcasts",
+      title: "Mindful Moments",
+    });
+
+    mockGetHealthResources.mockResolvedValueOnce([podcast]);
+
+    // Act
+    render(<ResourceCentre />);
+    await user.click(
+      await screen.findByRole("button", { name: "View Mindful Moments" }),
+    );
+    await user.click(screen.getByTestId("resource-details-backdrop"));
+
+    // Assert
+    expect(
+      screen.queryByRole("dialog", { name: "Mindful Moments" }),
+    ).not.toBeInTheDocument();
+  });
 });
